@@ -9,23 +9,24 @@ import java.util.Map;
 
 public class ContactCollectionDAO implements ContactDAO {
 
-    private Map<Integer,Contact> store;
+    private Map<Integer, Contact> store;
     private int generatorId = 0;
-    public ContactCollectionDAO(){
+
+    public ContactCollectionDAO() {
         store = new HashMap<>();
     }
 
     @Override
     public void daoSaveContact(Contact contact) {
         contact.setId(generatorId++);
-        store.put(contact.getId(),contact);
+        store.put(contact.getId(), contact);
     }
 
     @Override
     public void daoShowContact(String name) throws IOException {
-for (Contact contact: store.values()){
-    System.out.println(contact);
-}
+        for (Contact contact : store.values()) {
+            System.out.println(contact);
+        }
     }
 
     @Override

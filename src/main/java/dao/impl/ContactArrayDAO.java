@@ -11,11 +11,6 @@ import static ui.CommandLineService.*;
 
 public class ContactArrayDAO implements ContactDAO {
 
-
-    private static ContactDAO dao = new ContactArrayDAO();
-
-        this.dao = ContactDAO;
-
     public static int memorySlotsUsed = 0;
     public static int generatorId = 0;
 
@@ -23,21 +18,16 @@ public class ContactArrayDAO implements ContactDAO {
 
     @Override
     public void daoSaveContact(Contact contact) {
-        if (memorySlotsUsed <= 10) {
-
         if (memorySlotsUsed >= 10) {
             System.out.println("Memory is full");
         } else {
             contact = new Contact(name, surname, age, id);
             System.out.println("Create contact! " + contact);
-        store[memorySlotsUsed] = contact; // запись контактов в массив
+            store[memorySlotsUsed] = contact; // запись контактов в массив
             memorySlotsUsed++;
+        }
     }
 
-
-
-
-//
 //    if (memorySlotsUsed <= 10) {
 //
 //        if (memorySlotsUsed >= 10) {
@@ -48,26 +38,21 @@ public class ContactArrayDAO implements ContactDAO {
 //            dao.daoSaveContact(contact);
 //            memorySlotsUsed++;
 //        }
-//
-//
-//
 
     @Override
     public void daoShowContact(String name) throws IOException {
-        Contact localContact;
         try {
             for (int i = 0; i < store.length; i++) {
                 if (store[i].getName().equals(name)) { // поиск контакта в массиве по имени
-                    localContact = store[i];
-                    System.out.println(localContact.toString());
+                    System.out.println(store[i].toString());
                     break;
                 }
             }
         } catch (NullPointerException e) {
             System.out.println("Contact with this name is NOT FOUND!");
             //run();
-       }
-  }
+        }
+    }
 
     @Override
     public void daoShowAllContacts() {
@@ -84,13 +69,13 @@ public class ContactArrayDAO implements ContactDAO {
                 if (store[i].getName().equals(name)) { // поиск контакта в массиве по имени
                     store[i] = null; // присвоение контакту нового значения "null"
                     System.out.println("Contact with this name is DELETE!");
-                  //  contactArrayDAO.run();
+                    //  contactArrayDAO.run();
                     break;
                 }
             }
         } catch (NullPointerException e) {
             System.out.println("Contact with this name is NOT FOUND!");
-          //  run();
+            //  run();
         }
     }
 
@@ -99,17 +84,16 @@ public class ContactArrayDAO implements ContactDAO {
         try {
             for (int i = 0; i < store.length; i++) {
                 if (store[i].getName().equals(name)) { // поиск контакта в массиве по имени
-
                     System.out.println("Enter name:");
                     store[i].setName(br.readLine(). // присвоение контакту нового значения "имя"
                             toLowerCase());
                     System.out.println("Enter surname");
                     store[i].setSurname(br.readLine(). // присвоение контакту нового значения "фамилия"
                             toLowerCase());
-                  // store[i].setAge(.valid_Age()); // присвоение контакту нового значения "возраст"
+                    store[i].setAge(br.readLine().valid_Age()); // присвоение контакту нового значения "возраст"
 
                     System.out.println("Contact is MODIFY!\n" + store[i]);
-                   // run();
+                    // run();
                     break;
                 }
             }

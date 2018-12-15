@@ -10,15 +10,13 @@ import java.util.List;
 public class ContactDiscDAO implements ContactDAO {
 
     private File file;
-    private static int generatorId = 0;
+    private int generatorId = 0;
 
     public ContactDiscDAO() {
-        this.file = new File("ContactBook. txt");
-
+        this.file = new File("ContactBook.txt");
     }
 
     @Override
-
     public void daoSaveContact(Contact contact) {
         try (FileWriter fileWriter = new FileWriter(file, true);
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
@@ -36,8 +34,7 @@ public class ContactDiscDAO implements ContactDAO {
         file = new File("ContactBook. txt");
         List<Contact> list = new ArrayList<>();
         try (FileReader fileReader = new FileReader(file);
-             BufferedReader bufferedReader = new BufferedReader(fileReader))
-        {
+             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
             while (bufferedReader.ready()) {
                 String line = bufferedReader.readLine();
                 String[] strings = line.split(" ");
@@ -47,17 +44,16 @@ public class ContactDiscDAO implements ContactDAO {
                 int id = Integer.valueOf(strings[7]);
                 list.add(new Contact(name1, surname, age, id));
             }
-        }catch (IOException e){
+        } catch (IOException e) {
             System.out.println("ERROR");
         }
-        for (Contact contact : list){
+        for (Contact contact : list) {
             System.out.println(contact);
         }
     }
 
     @Override
     public void daoShowAllContacts() {
-
 
     }
 
