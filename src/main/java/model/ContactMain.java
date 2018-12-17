@@ -13,10 +13,19 @@ import java.io.InputStreamReader;
 
 public class ContactMain {
     public static void main(String[] args) throws IOException {
-        ContactDAO dao = new ContactDiscDAO();
-        ContactService contactService = new ContactService(dao);
+
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        ContactDAO dao = new ContactDiscDAO(br);
+        ContactService contactService = new ContactService(dao);
+
         CommandLineService service = new CommandLineService(contactService, br);
+      //ContactArrayDAO(br);
+        //ContactDiscDAO(br);
         service.run();
     }
 }
+
+
+//Name: s Surname: s Age: 3 Id: 1
+//        Name: r Surname: r Age: 6 Id: 2

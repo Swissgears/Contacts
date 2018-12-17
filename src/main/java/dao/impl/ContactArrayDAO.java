@@ -2,45 +2,39 @@ package dao.impl;
 
 import dao.ContactDAO;
 import model.Contact;
-import services.ContactService;
-import ui.CommandLineService;
-
+import java.io.BufferedReader;
 import java.io.IOException;
 
-import static ui.CommandLineService.*;
 
 public class ContactArrayDAO implements ContactDAO {
+  private BufferedReader br;
 
     public static int memorySlotsUsed = 0;
-    public static int generatorId = 0;
+    // public static int generatorId = 0;
 
     private Contact[] store = new Contact[10]; // массив контактов
 
+    public ContactArrayDAO(BufferedReader br) {
+        this.br = br;
+    }
+
     @Override
     public void daoSaveContact(Contact contact) {
-        if (memorySlotsUsed >= 10) {
-            System.out.println("Memory is full");
-        } else {
-            contact = new Contact(name, surname, age, id);
-            System.out.println("Create contact! " + contact);
-            store[memorySlotsUsed] = contact; // запись контактов в массив
-            memorySlotsUsed++;
+
+        if (memorySlotsUsed <= 10) {
+            if (memorySlotsUsed >= 10) {
+                System.out.println("Memory is full");
+            } else {
+
+                System.out.println("Create contact! " + contact);
+                store[memorySlotsUsed] = contact; // запись контактов в массив
+                memorySlotsUsed++;
+            }
         }
     }
 
-//    if (memorySlotsUsed <= 10) {
-//
-//        if (memorySlotsUsed >= 10) {
-//            System.out.println("Memory is full");
-//        } else {
-//            Contact contact = new Contact(name, surname, age, id);
-//            System.out.println("Create contact! " + contact);
-//            dao.daoSaveContact(contact);
-//            memorySlotsUsed++;
-//        }
-
     @Override
-    public void daoShowContact(String name) throws IOException {
+    public void daoShowContact(String name) {
         try {
             for (int i = 0; i < store.length; i++) {
                 if (store[i].getName().equals(name)) { // поиск контакта в массиве по имени
@@ -50,7 +44,6 @@ public class ContactArrayDAO implements ContactDAO {
             }
         } catch (NullPointerException e) {
             System.out.println("Contact with this name is NOT FOUND!");
-            //run();
         }
     }
 
@@ -62,20 +55,18 @@ public class ContactArrayDAO implements ContactDAO {
     }
 
     @Override
-    public void daoDeleteContact(String name) throws IOException {
+    public void daoDeleteContact(String name) {
         try {
             for (int i = 0; i < store.length; i++) {
 
                 if (store[i].getName().equals(name)) { // поиск контакта в массиве по имени
                     store[i] = null; // присвоение контакту нового значения "null"
                     System.out.println("Contact with this name is DELETE!");
-                    //  contactArrayDAO.run();
                     break;
                 }
             }
         } catch (NullPointerException e) {
             System.out.println("Contact with this name is NOT FOUND!");
-            //  run();
         }
     }
 
@@ -84,22 +75,22 @@ public class ContactArrayDAO implements ContactDAO {
         try {
             for (int i = 0; i < store.length; i++) {
                 if (store[i].getName().equals(name)) { // поиск контакта в массиве по имени
-                    System.out.println("Enter name:");
+                    System.out.println("Enter new name:");
                     store[i].setName(br.readLine(). // присвоение контакту нового значения "имя"
                             toLowerCase());
-                    System.out.println("Enter surname");
+                    System.out.println("Enter new surname");
                     store[i].setSurname(br.readLine(). // присвоение контакту нового значения "фамилия"
                             toLowerCase());
-                    store[i].setAge(br.readLine().valid_Age()); // присвоение контакту нового значения "возраст"
+                    System.out.println("Enter new age");
+                   int age = new Integer(br.readLine());
+                    store[i].setAge(age); // присвоение контакту нового значения "возраст"
 
                     System.out.println("Contact is MODIFY!\n" + store[i]);
-                    // run();
                     break;
                 }
             }
         } catch (NullPointerException e) {
             System.out.println("Contact with this name is NOT FOUND!");
-            //run();
         }
     }
 }
