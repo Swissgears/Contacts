@@ -2,15 +2,15 @@ package dao.impl;
 
 import dao.ContactDAO;
 import model.Contact;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 
 
 public class ContactArrayDAO implements ContactDAO {
-  private BufferedReader br;
+    private BufferedReader br;
 
     public static int memorySlotsUsed = 0;
-    // public static int generatorId = 0;
 
     private Contact[] store = new Contact[10]; // массив контактов
 
@@ -25,10 +25,9 @@ public class ContactArrayDAO implements ContactDAO {
             if (memorySlotsUsed >= 10) {
                 System.out.println("Memory is full");
             } else {
-
-                System.out.println("Create contact! " + contact);
                 store[memorySlotsUsed] = contact; // запись контактов в массив
                 memorySlotsUsed++;
+                System.out.println("Create contact! " + contact);
             }
         }
     }
@@ -82,7 +81,7 @@ public class ContactArrayDAO implements ContactDAO {
                     store[i].setSurname(br.readLine(). // присвоение контакту нового значения "фамилия"
                             toLowerCase());
                     System.out.println("Enter new age");
-                   int age = new Integer(br.readLine());
+                    int age = new Integer(br.readLine());
                     store[i].setAge(age); // присвоение контакту нового значения "возраст"
 
                     System.out.println("Contact is MODIFY!\n" + store[i]);

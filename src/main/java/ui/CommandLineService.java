@@ -11,8 +11,6 @@ import static dao.impl.ContactArrayDAO.memorySlotsUsed;
 public class CommandLineService {
     private ContactService contactService;
     private BufferedReader br;
-    public static int generatorId = 0;
-
 
     public CommandLineService(ContactService contactService, BufferedReader br) {
         this.contactService = contactService;
@@ -59,8 +57,7 @@ public class CommandLineService {
             System.out.println("Enter surname");
             String surname = br.readLine().toLowerCase();
             int age = get_Valid_Age();
-            int id = generatorId++;
-            contactService.create_Contact(name, surname, age, id);
+            contactService.create_Contact(name, surname, age);
 
         }
     }

@@ -16,7 +16,7 @@ public class ContactMain {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        ContactDAO dao = new ContactDiscDAO(br);
+        ContactDAO dao = new  ContactDiscDAO(br);
         ContactService contactService = new ContactService(dao);
 
         CommandLineService service = new CommandLineService(contactService, br);
@@ -28,4 +28,4 @@ public class ContactMain {
 
 
 //Name: s Surname: s Age: 3 Id: 1
-//        Name: r Surname: r Age: 6 Id: 2
+//Name: r Surname: r Age: 6 Id: 2

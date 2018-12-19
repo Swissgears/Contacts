@@ -13,8 +13,8 @@ public class ContactService {
         this.dao = contactDAO;
     }
 
-    public void create_Contact(String name, String surname, int age, int id) {
-        Contact contact = new Contact(name, surname, age, id);
+    public void create_Contact(String name, String surname, int age) {
+        Contact contact = new Contact(name, surname, age);
         dao.daoSaveContact(contact);
 
     }

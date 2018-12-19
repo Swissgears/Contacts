@@ -1,16 +1,16 @@
 package model;
 
 public class Contact {
-    private int id;
+  //  private int id;
     private int age;
     private String name;
     private String surname;
 
-    public Contact(String name, String surname, int age, int id) {
+    public Contact(String name, String surname, int age) {
         this.name = name;
         this.surname = surname;
         this.age = age;
-        this.id = id;
+       // this.id = id;
     }
 
     public String getName() {
@@ -36,16 +36,16 @@ public class Contact {
     public void setAge(int age) {
         this.age = age;
     }
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+//    public int getId() {
+//        return id;
+//    }
+//
+//    public void setId(int id) {
+//        this.id = id;
+//    }
     @Override
     public String toString() {
-        return "Name: " + this.name + " Surname: " + this.surname + " Age: " + this.age + " Id: " + this.id ;
+        return "Name: " + this.name + " Surname: " + this.surname + " Age: " + this.age;
     }
 
 }

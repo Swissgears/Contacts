@@ -10,7 +10,6 @@ import java.util.Map;
 public class ContactCollectionDAO implements ContactDAO {
 
     private Map<Integer, Contact> store;
-   // private int generatorId = 0;
 
     public ContactCollectionDAO() {
         store = new HashMap<>();
@@ -19,7 +18,7 @@ public class ContactCollectionDAO implements ContactDAO {
     @Override
     public void daoSaveContact(Contact contact) {
      //   contact.setId(generatorId++);
-        store.put(contact.getId(), contact);
+       // store.put(contact.getId(), contact);
     }
 
     @Override
