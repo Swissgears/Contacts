@@ -3,6 +3,7 @@ package model;
 import dao.ContactDAO;
 import dao.impl.ContactArrayDAO;
 import dao.impl.ContactCollectionDAO;
+import dao.impl.ContactDbDAO;
 import dao.impl.ContactDiscDAO;
 import services.ContactService;
 import ui.CommandLineService;
@@ -16,12 +17,14 @@ public class ContactMain {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        ContactDAO dao = new  ContactDiscDAO(br);
+        ContactDAO dao = new ContactCollectionDAO(br);
         ContactService contactService = new ContactService(dao);
 
         CommandLineService service = new CommandLineService(contactService, br);
       //ContactArrayDAO(br);
         //ContactDiscDAO(br);
+       // ContactDbDAO();
+        //ContactCollectionDAO(br);
         service.run();
     }
 }

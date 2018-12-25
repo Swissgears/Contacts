@@ -97,7 +97,7 @@ public class ContactDiscDAO implements ContactDAO {
 
 
     @Override
-    public void daoDeleteContact(String name) throws IOException {
+    public void daoDeleteContact(String name) {
         sourceFile = new File("ContactBook.txt");
         List<Contact> list = new ArrayList<>();
         try {
