@@ -17,13 +17,13 @@ public class ContactMain {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        ContactDAO dao = new ContactCollectionDAO(br);
+        ContactDAO dao = new ContactDbDAO(br);
         ContactService contactService = new ContactService(dao);
 
         CommandLineService service = new CommandLineService(contactService, br);
       //ContactArrayDAO(br);
         //ContactDiscDAO(br);
-       // ContactDbDAO();
+       // ContactDbDAO(br);
         //ContactCollectionDAO(br);
         service.run();
     }

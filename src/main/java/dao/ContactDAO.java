@@ -14,6 +14,4 @@ public interface ContactDAO {
     void daoDeleteContact(String name) throws IOException;
 
     void daoModifyContact(String name) throws IOException;
-
-   //Contact getById(Integer id);
 }
